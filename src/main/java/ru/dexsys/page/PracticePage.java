@@ -15,7 +15,7 @@ public class PracticePage {
     private SelenideElement removeFirstProduct = $x("//dl[@class=\"products\"]/dt[1]/span/a");
     private SelenideElement openPageCart = $x("//div[@class=\"shopping_cart\"]/a");
     private SelenideElement countProducts = $x("//div[@class=\"shopping_cart\"]//span[1]");
-    private SelenideElement countProductOpeningCart = $x("//span[@id=\"summary_products_quantity\"]");
+    private SelenideElement countProductOpeningPageCart = $x("//span[@id=\"summary_products_quantity\"]");
     private SelenideElement countFirstProduct = $x("//dl[@class=\"products\"]//dt[1]//span[@class=\"quantity\"]");
 
 
@@ -46,7 +46,7 @@ public class PracticePage {
     public void checkCountProducts() throws AssertionError {
         String countProduct = countProducts.getOwnText();
         openPageCart();
-        String countAfterOpening = countProductOpeningCart.getOwnText();
+        String countAfterOpening = countProductOpeningPageCart.getOwnText();
         Assert.assertTrue(countAfterOpening.contains(countProduct));
     }
 
