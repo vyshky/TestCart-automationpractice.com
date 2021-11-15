@@ -19,8 +19,6 @@ public class PracticePage {
     private SelenideElement countProducts = $x("//div[@class=\"shopping_cart\"]//span[1]");
     private SelenideElement countProductOpeningPageCart = $x("//span[@id=\"summary_products_quantity\"]");
     private SelenideElement countFirstProduct = $x("//dl[@class=\"products\"]//dt[1]//span[@class=\"quantity\"]");
-    private SelenideElement cartTextEmpty = $x("//span[@class=\"ajax_cart_quantity unvisible\"]");
-
 
     public static String getBASE_URL() {
         return BASE_URL;
@@ -30,7 +28,7 @@ public class PracticePage {
         JavascriptExecutor js = (JavascriptExecutor) addProductToCart.getWrappedDriver();
         js.executeScript("arguments[0].click();", addProductToCart);
         closePopUpWindow.click();
-        int countProduct = Integer.parseInt(cartTextEmpty.getOwnText());
+        int countProduct = Integer.parseInt(countProducts.getOwnText());
         Assert.assertTrue(countProduct > 0);
     }
 
@@ -40,11 +38,10 @@ public class PracticePage {
     }
 
     public void removeFirstProduct() throws JavascriptException, AssertionError {
+        int countProduct = Integer.parseInt(countProducts.getOwnText());
+        Assert.assertFalse((countProduct - 1) > 0);
         JavascriptExecutor js = (JavascriptExecutor) removeFirstProduct.getWrappedDriver();
         js.executeScript("arguments[0].click();", removeFirstProduct);
-        int countText = Integer.parseInt(cartTextEmpty.getOwnText());
-        int countProduct = Integer.parseInt(countProducts.getOwnText());
-        Assert.assertFalse(countProduct - 1 == countText);
     }
 
     public void openPageCart() {

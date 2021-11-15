@@ -3,9 +3,12 @@ package ru.dexsys.steps;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.JavascriptException;
 import ru.dexsys.page.PracticePage;
@@ -28,7 +31,7 @@ public class TestRuner {
         Selenide.open(PracticePage.getBASE_URL());
     }
 
-    @Given("I add a product")
+    @When("I add a product")
     public void addToCart() {
         try {
             page.addToCart();
@@ -38,7 +41,7 @@ public class TestRuner {
         }
     }
 
-    @Given("I am removing a product")
+    @Then("I am removing a product")
     public void removeFirstProduct() {
         try {
             page.addToCart();
@@ -52,25 +55,24 @@ public class TestRuner {
     public void cartNotEmpty() {
 
         try {
-            page.addToCart();
             page.cartNotEmpty();
-            page.removeFirstProduct();
         } catch (AssertionError e) {
             Assert.fail("В корзине нет всплывающих элементов\n" + e.getMessage() + "\t" + e);
         }
     }
 
-    @Given("I open cart page")
-    public void openCart() {
+    @When("I open cart page")
+    public void openCartPage() {
         try {
             page.openPageCart();
+            Selenide.open(PracticePage.getBASE_URL());
         } catch (AssertionError e) {
             Assert.fail("Страница не открылась");
         }
     }
 
 
-    @Given("I check the number of products in the basket")
+    @Then("I check the number of products in the cart page")
     public void checkCountProducts() {
         try {
             page.addToCart();
@@ -81,14 +83,14 @@ public class TestRuner {
         }
     }
 
-    @Given("I check the quantity")
-    public void checkCountProduct() {
+    @Given("I check the first product count")
+    public void checkCountFirstProduct() {
         try {
             page.addToCart();
             page.checkCountProduct();
             page.removeFirstProduct();
         } catch (AssertionError e) {
-            Assert.fail("Количество первого продукта не может быть меньше 1" + e.getMessage() + "\t" + e);
+            Assert.fail("Количество первого продукта не может быть меньше 1 " + e.getMessage() + "\t" + e);
         }
     }
 
