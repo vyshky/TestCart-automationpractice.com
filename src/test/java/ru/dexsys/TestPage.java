@@ -6,6 +6,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.JavascriptException;
 import ru.dexsys.page.PracticePage;
 
 public class TestPage {
@@ -22,8 +23,8 @@ public class TestPage {
     public void addToCart() {
         try {
             page.addToCart();
-        } catch (AssertionError e) {
-            Assert.fail(e.getMessage());
+        } catch (JavascriptException | AssertionError e) {
+            Assert.fail("Не удалось добавить продукт , возможно на странице нет продуктов");
         }
     }
 
@@ -32,8 +33,8 @@ public class TestPage {
         try {
             page.addToCart();
             page.removeFirstProduct();
-        } catch (AssertionError e) {
-            Assert.fail(e.getMessage());
+        } catch (JavascriptException | AssertionError e) {
+            Assert.fail("Не удалось удалить продукт  , возможно ваша корзина пуста");
         }
     }
 

@@ -1,8 +1,8 @@
 package ru.dexsys.page;
 
 import com.codeborne.selenide.SelenideElement;
-import io.cucumber.java.bs.A;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.JavascriptExecutor;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -23,7 +23,7 @@ public class PracticePage {
         return BASE_URL;
     }
 
-    public void addToCart() throws AssertionError {
+    public void addToCart() throws JavascriptException {
         JavascriptExecutor js = (JavascriptExecutor) addProductToCart.getWrappedDriver();
         js.executeScript("arguments[0].click();", addProductToCart);
         closePopUpWindow.click();
@@ -34,7 +34,7 @@ public class PracticePage {
         Assert.assertTrue(text >= 1);
     }
 
-    public void removeFirstProduct() throws AssertionError {
+    public void removeFirstProduct() throws JavascriptException {
         JavascriptExecutor js = (JavascriptExecutor) removeFirstProduct.getWrappedDriver();
         js.executeScript("arguments[0].click();", removeFirstProduct);
     }

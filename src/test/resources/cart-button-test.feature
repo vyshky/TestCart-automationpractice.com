@@ -21,30 +21,3 @@ Feature: Test button cart - automationpractice.com
 
   Scenario: I check the quantity of the first product
     Given I check the quantity
-
-
-
-
-
-
-
-
-#  Scenario: I get get rooms
-#    Given I ask you to give me back the room numbers
-#  Scenario: I get get users
-#    Given I ask you to give me back the users. start = 1 end = 5
-#
-#
-#  Scenario Outline: I check the privileges of all users
-#    When I check to enter the room. userId = <id> maxRoom = <room>
-#    Examples: I enter the rooms
-#      | id | room |
-#      | 1  | 5    |
-#      | 2  | 5    |
-#      | 3  | 5    |
-#      | 5  | 5    |
-#      | 6  | 5    |
-#      | 7  | 5    |
-#      | 8  | 5    |
-#      | 9  | 5    |
-#      | 10 | 5    |
