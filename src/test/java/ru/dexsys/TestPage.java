@@ -51,7 +51,7 @@ public class TestPage {
     @Test
     public void openCart() {
         try {
-            page.openCart();
+            page.openPageCart();
         } catch (AssertionError e) {
             Assert.fail(e.getMessage());
         }

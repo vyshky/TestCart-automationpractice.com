@@ -39,13 +39,13 @@ public class PracticePage {
         js.executeScript("arguments[0].click();", removeFirstProduct);
     }
 
-    public void openCart() {
+    public void openPageCart() {
         openCart.click();
     }
 
     public void checkCountProducts() throws AssertionError {
         String countProduct = countProducts.getOwnText();
-        openCart();
+        openPageCart();
         String countAfterOpening = countProductOpeningCart.getOwnText();
         Assert.assertTrue(countAfterOpening.contains(countProduct));
     }
