@@ -54,7 +54,7 @@ public class TestPage {
         try {
             page.openPageCart();
         } catch (AssertionError e) {
-            Assert.fail(e.getMessage());
+            Assert.fail("Страница не открылась");
         }
     }
 
