@@ -1,4 +1,4 @@
-Feature: Test automationpractice.com
+Feature: Test button cart - automationpractice.com
 
   Background: I am checking if the website can be opened
     Given  I open page
