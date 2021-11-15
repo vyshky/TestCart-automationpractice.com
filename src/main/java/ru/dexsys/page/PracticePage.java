@@ -13,7 +13,7 @@ public class PracticePage {
     private SelenideElement closePopUpWindow = $x("//span[@class=\"cross\"]");
     private SelenideElement checkNotEmptyCart = $x("//div[@class=\"shopping_cart\"]/a/span[1]");
     private SelenideElement removeFirstProduct = $x("//dl[@class=\"products\"]/dt[1]/span/a");
-    private SelenideElement openCart = $x("//div[@class=\"shopping_cart\"]/a");
+    private SelenideElement openPageCart = $x("//div[@class=\"shopping_cart\"]/a");
     private SelenideElement countProducts = $x("//div[@class=\"shopping_cart\"]//span[1]");
     private SelenideElement countProductOpeningCart = $x("//span[@id=\"summary_products_quantity\"]");
     private SelenideElement countFirstProduct = $x("//dl[@class=\"products\"]//dt[1]//span[@class=\"quantity\"]");
@@ -40,7 +40,7 @@ public class PracticePage {
     }
 
     public void openPageCart() {
-        openCart.click();
+        openPageCart.click();
     }
 
     public void checkCountProducts() throws AssertionError {
