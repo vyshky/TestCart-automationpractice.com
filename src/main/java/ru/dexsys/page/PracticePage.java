@@ -57,7 +57,7 @@ public class PracticePage {
         Assert.assertTrue(countAfterOpening.contains(countProduct));
     }
 
-    public void checkCountProduct() throws AssertionError {
+    public void checkCountFirstProduct() throws AssertionError {
         int countProduct = Integer.parseInt(countFirstProduct.getOwnText());
         Assert.assertTrue(countProduct >= 1);
     }
