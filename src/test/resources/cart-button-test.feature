@@ -14,3 +14,6 @@ Feature: Test button cart - automationpractice.com
 
   Scenario: I check the quantity of the first product
     Given I check the first product count
+
+    Scenario: I test color cart button
+      Given I am testing color shopping cart icon

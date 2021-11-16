@@ -1,24 +1,31 @@
 package ru.dexsys.page;
 
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptException;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.*;
+import ru.dexsys.util.ColorCode;
+
+import java.time.chrono.JapaneseEra;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticePage {
     private static final String BASE_URL = "http://automationpractice.com/index.php";
+    private SelenideElement openPageCart = $x("//div[@class=\"shopping_cart\"]/a");
+    private SelenideElement checkNotEmptyCart = $x("//div[@class=\"shopping_cart\"]/a/span[1]");
+
     private SelenideElement addProductToCart = $x("//a[@data-id-product=\"1\"]");
     private SelenideElement closePopUpWindow = $x("//span[@class=\"cross\"]");
-    private SelenideElement checkNotEmptyCart = $x("//div[@class=\"shopping_cart\"]/a/span[1]");
     private SelenideElement removeFirstProduct = $x("//dl[@class=\"products\"]/dt[1]/span/a");
-    private SelenideElement openPageCart = $x("//div[@class=\"shopping_cart\"]/a");
-    private SelenideElement countProducts = $x("//div[@class=\"shopping_cart\"]//span[1]");
+
     private SelenideElement countProductOpeningPageCart = $x("//span[@id=\"summary_products_quantity\"]");
+    private SelenideElement countProducts = $x("//div[@class=\"shopping_cart\"]//span[1]");
     private SelenideElement countFirstProduct = $x("//dl[@class=\"products\"]//dt[1]//span[@class=\"quantity\"]");
+
+    private SelenideElement blockButton = $x("//div[@class=\"shopping_cart\"]/a[1]");
+
 
     public static String getBASE_URL() {
         return BASE_URL;
@@ -61,5 +68,11 @@ public class PracticePage {
         Assert.assertTrue(firstProduct > 0);
     }
 
-
+    public void checkColorIcon() {
+        JavascriptExecutor js = (JavascriptExecutor) blockButton.getWrappedDriver();
+        String colorIcon = js.executeScript("return window.getComputedStyle(document.querySelector('.shopping_cart > a'),'::before').getPropertyValue('color')")
+                .toString();
+        Assert.assertTrue(colorIcon.equals(ColorCode.white));
+    }
 }
+

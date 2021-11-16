@@ -36,7 +36,7 @@ public class TestRuner {
         try {
             page.addToCart();
         } catch (JavascriptException | AssertionError e) {
-            Assert.fail("Не удалось добавить продукт , возможно на странице нет продуктов");
+            Assert.fail("Не удалось добавить продукт , возможно на странице нет продуктов ");
         }
     }
 
@@ -45,7 +45,7 @@ public class TestRuner {
         try {
             page.removeFirstProduct();
         } catch (JavascriptException | AssertionError e) {
-            Assert.fail("Не удалось удалить продукт  , возможно ваша корзина пуста");
+            Assert.fail("Не удалось удалить продукт  , возможно ваша корзина пуста ");
         }
     }
 
@@ -65,7 +65,7 @@ public class TestRuner {
             page.openPageCart();
             Selenide.open(PracticePage.getBASE_URL());
         } catch (AssertionError e) {
-            Assert.fail("Страница не открылась");
+            Assert.fail("Страница не открылась ");
         }
     }
 
@@ -77,7 +77,7 @@ public class TestRuner {
             page.checkCountProducts();
             page.removeFirstProduct();
         } catch (AssertionError e) {
-            Assert.fail("Количество продуктов в блоке Cart не совпадает c содержимым количеством продуктов на странице товаров" + e.getMessage() + "\t" + e);
+            Assert.fail("Количество продуктов в блоке Cart не совпадает c содержимым количеством продуктов на странице товаров " + e.getMessage() + "\t" + e);
         }
     }
 
@@ -93,4 +93,12 @@ public class TestRuner {
     }
 
 
+    @Given("I am testing color shopping cart icon")
+    public void checkColorIcon() {
+        try {
+            page.checkColorIcon();
+        } catch (AssertionError e) {
+            Assert.fail("Цвет не соответствует требованиям " + e.getMessage() + "\t" + e);
+        }
+    }
 }
