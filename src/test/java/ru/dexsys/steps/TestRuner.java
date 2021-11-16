@@ -49,7 +49,7 @@ public class TestRuner {
         }
     }
 
-    @And("I am checking if there is a product(Not Empty)")
+    @And("I am checking if there is a product - Not Empty")
     public void cartNotEmpty() {
 
         try {

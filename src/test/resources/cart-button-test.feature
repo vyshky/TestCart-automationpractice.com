@@ -5,7 +5,7 @@ Feature: Test button cart - automationpractice.com
 
   Scenario: I am checking if it is possible to add and remove a product to the cart
     When I add a product
-    And I am checking if there is a product(Not Empty)
+    And I am checking if there is a product - Not Empty
     Then I am removing a product
 
   Scenario: I check the number of products page in the basket and in the pop-up block cart
