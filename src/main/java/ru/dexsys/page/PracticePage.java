@@ -33,8 +33,8 @@ public class PracticePage {
     }
 
     public void cartNotEmpty() throws AssertionError {
-        int text = Integer.parseInt(checkNotEmptyCart.getOwnText());
-        Assert.assertTrue(text >= 1);
+        int cartNotEmpty = Integer.parseInt(checkNotEmptyCart.getOwnText());
+        Assert.assertTrue(cartNotEmpty > 0);
     }
 
     public void removeFirstProduct() throws JavascriptException, AssertionError {
@@ -46,20 +46,19 @@ public class PracticePage {
 
     public void openPageCart() {
         openPageCart.click();
-        var temp = WebDriverRunner.currentFrameUrl();
         Assert.assertFalse(WebDriverRunner.currentFrameUrl() == BASE_URL);
     }
 
     public void checkCountProducts() throws AssertionError {
         String countProduct = countProducts.getOwnText();
         openPageCart();
-        String countAfterOpening = countProductOpeningPageCart.getOwnText();
-        Assert.assertTrue(countAfterOpening.contains(countProduct));
+        String countProductsPage = countProductOpeningPageCart.getOwnText();
+        Assert.assertTrue(countProductsPage.contains(countProduct));
     }
 
     public void checkCountFirstProduct() throws AssertionError {
-        int countProduct = Integer.parseInt(countFirstProduct.getOwnText());
-        Assert.assertTrue(countProduct >= 1);
+        int firstProduct = Integer.parseInt(countFirstProduct.getOwnText());
+        Assert.assertTrue(firstProduct > 0);
     }
 
 
